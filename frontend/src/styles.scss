@@ -3,8 +3,14 @@
 html,
 body {
   height: 100%;
+  // background-img: url("abc.jpg");
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-image: URL("assets/images/abc.jpg");
+  background-size: cover;
 }

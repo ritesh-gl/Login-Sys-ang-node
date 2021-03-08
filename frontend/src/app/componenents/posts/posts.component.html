@@ -1,7 +1,26 @@
 <div>
-    <div *ngFor="let user of users">
-        <h1>Name: {{user.name}}</h1>
+    <h1 align=center>List of Users</h1>
+    <div *ngFor="let user of users" align=center>
+        <mat-list dense>
+        <h2>Name: {{user.name}}</h2>
         <h3>Email: {{user.email}}</h3>
+    </mat-list>
     </div>
 <!-- <p>{{users | json}}</p> -->
 </div>
+
+
+
+
+
+<!-- <div class="list-sample">
+    <igx-list>
+        <igx-list-item isHeader="true">Contacts</igx-list-item>
+        <igx-list-item #item *ngFor="let user of users">
+             <igx-avatar igxListThumbnail [src]="contact.photo" roundShape="true"></igx-avatar>
+            <span igxListLineTitle>{{ user.name }}</span>
+            <span igxListLineSubTitle>{{ user.email}}</span>
+            <igx-icon igxListAction [color]="contact.isFavorite ? 'orange' : 'lightgray'" (click)="toggleFavorite(contact)">star</igx-icon> 
+        </igx-list-item>
+    </igx-list>
+</div> -->
