@@ -22,9 +22,10 @@ body {
 }
 
 .login-wrapper {
-  height: 100%;
-  margin-left: 32%;
-  margin-top: 8%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0.8;
 }
 
@@ -108,4 +109,25 @@ body {
 
 .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.8375em 0;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner 0.8s linear infinite;
 }

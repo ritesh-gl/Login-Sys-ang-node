@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   error:any;
   isError:boolean =false;
+  loading:boolean = false;
 
   constructor(private authService: AuthService) {}
 
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     // console.log("hello");
-
+    this.loading = true;
     this.authService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe({
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
           this.isError = true;
           this.error = error;
           console.log(error);
+          this.loading = false;
         }
       })
   }

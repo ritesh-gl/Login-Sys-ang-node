@@ -107,7 +107,7 @@ exports.login = (req, res, next) => {
         return res.status(200).json({ token: token, userId: user.id });
         // return res.status(200).send({ message: "Logged in" });
       } else {
-        return res.status(200).send({ message: "password doesn't match!" });
+        return res.status(403).send({ message: "password doesn't match!" });
       }
     }
   });

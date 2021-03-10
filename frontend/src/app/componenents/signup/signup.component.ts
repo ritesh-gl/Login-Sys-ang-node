@@ -12,6 +12,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class SignupComponent implements OnInit {
 signupForm:FormGroup;
 signUpMessage:any;
+loading:boolean;
 
   constructor(private authService:AuthService, private router: Router, private httpClient: HttpClient) { }
 
@@ -40,6 +41,7 @@ signUpMessage:any;
   }
 
   signup(): void {
+    this.loading = true;
     console.log(this.signupForm.value)
     // this.authService
     // .signup(this.signupForm.value)

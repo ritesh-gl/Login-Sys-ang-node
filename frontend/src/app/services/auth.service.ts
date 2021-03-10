@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, BehaviorSubject, throwError } from "rxjs";
 import { first, catchError, tap } from "rxjs/operators";
 
 import { User } from "../models/User";
@@ -62,12 +62,10 @@ export class AuthService {
           this.isUserLoggedIn$.next(true);
           this.router.navigate(["posts"]);
         }),
-        catchError(
-          this.errorHandlerService.handleError<{
-            token: string;
-            userId: Pick<User, "id">;
-          }>("login")
-        )
+        catchError((error)=>{
+
+          return throwError(error); 
+        })
       );
   }
 }

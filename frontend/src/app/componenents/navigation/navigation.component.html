@@ -5,23 +5,43 @@
         <span>Home</span>
         </a>
         </span>
-        <span>
-        <a 
-        routerLinkActive="active-link"
-        routerLink="/posts">
-        <span>Main</span>
-        </a>
-  
+        <div *ngIf="!isLoggedIn">
+
+
+            <span>
+                <!-- <a 
+                routerLinkActive="active-link"
+                routerLink="/posts">
+                <span>Main</span>
+        </a> -->
+        
         <a 
         routerLinkActive="active-link"
         routerLink="/login">
         <span>Login</span>
-        </a>
+    </a>
     
-        <a 
-        routerLinkActive="active-link"
-        routerLink="/signup">
-        <span>Signup</span>
-        </a>
+                <a 
+                routerLinkActive="active-link"
+                routerLink="/signup">
+                <span>Signup</span>
+                    </a>
         </span>
+        </div>
+        <div *ngIf="isLoggedIn">
+            <span>
+                <a 
+                routerLinkActive="active-link"
+                routerLink="/posts">
+                <span>Posts</span>
+        </a>
+            <a 
+            routerLinkActive="active-link"
+            routerLink="#"
+            (click)="logout()">
+            <span>Logout</span>
+    </a>
+        </span>
+
+        </div>
 </mat-toolbar>

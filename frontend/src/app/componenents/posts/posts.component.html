@@ -1,14 +1,32 @@
-<div>
+<!-- <div>
     <h1 align=center>List of Users</h1>
     <div *ngFor="let user of users" align=center>
         <mat-list dense>
         <h2>Name: {{user.Name}}</h2>
         <h3>Email: {{user.Email}}</h3>
     </mat-list>
-    </div>
+    </div> -->
 <!-- <p>{{users | json}}</p> -->
-</div>
+<!-- </div> -->
+<div class="main-div">
+    <mat-card class="box">
+        <mat-card-header>
+          <mat-card-title><h1>List of Users</h1></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
 
+        </mat-card-content>
+        </mat-card>
+        <div *ngFor="let user of users">
+            <mat-card class="list-card">
+                <mat-card-content>
+                    <h2>Name: {{user.Name}}</h2>
+                    <h3>Email: {{user.Email}}</h3>
+                </mat-card-content>
+           
+        </mat-card>
+        </div>
+</div>
 
 
 
