@@ -10,19 +10,23 @@ import { Router } from '@angular/router';
 export class PostsComponent implements OnInit {
   users:any;
   token:any;
-constructor(private httpClient: HttpClient, private router:Router) {   }
+  
+  constructor(private httpClient: HttpClient, private router:Router) {   }
+
   ngOnInit(): void {
     if(!localStorage.getItem('token')){
-    this.router.navigate(['login']);
+      this.router.navigate(['login']);
     }
+
     let token = localStorage.getItem('token');
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('x-access-token',token);
+
     this.httpClient.post("http://localhost:3000/auth/showData",{},{headers})
     .subscribe((res)=>{
-      console.log(res)
-      this.users = res;
-      this.users = this.users.user;
+       console.log(res)
+       this.users = res;
+       this.users = this.users.user;
       console.log(this.users)
     })
    

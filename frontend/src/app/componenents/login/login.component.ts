@@ -9,6 +9,8 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  error:any;
+  isError:boolean =false;
 
   constructor(private authService: AuthService) {}
 
@@ -27,10 +29,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log("hello");
+    // console.log("hello");
 
     this.authService
       .login(this.loginForm.value.email, this.loginForm.value.password)
-      .subscribe();
+      .subscribe({
+        next: data =>{
+          console.log(data)
+        },
+        error :error =>{
+          this.isError = true;
+          this.error = error;
+          console.log(error);
+        }
+      })
   }
 }

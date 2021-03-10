@@ -7,6 +7,7 @@ import { first, catchError, tap } from "rxjs/operators";
 
 import { User } from "../models/User";
 import { ErrorHandlerService } from "./error-handler.service";
+import { ConditionalExpr } from "@angular/compiler";
 
 @Injectable({
   providedIn: "root",
@@ -49,7 +50,12 @@ export class AuthService {
     return this.http
       .post(`${this.url}/login`, { email, password }, this.httpOptions)
       .pipe(
-        first(),
+        first((data)=>{
+          if(data == {message: "password doesn't match!"})
+          return false;
+          // console.log("Password wrong!")
+          return true;
+        }),
         tap((tokenObject: { token: string; userId: Pick<User, "id"> }) => {
           this.userId = tokenObject.userId;
           localStorage.setItem("token", tokenObject.token);
