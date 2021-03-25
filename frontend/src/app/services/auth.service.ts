@@ -29,8 +29,6 @@ export class AuthService {
     private router: Router
   ) {}
 
-  
-
   signup(user: any): Observable<any> {
     return this.http
       .post<User>(`${this.url}/signup`, user, this.httpOptions)
