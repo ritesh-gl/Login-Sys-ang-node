@@ -29,6 +29,8 @@ export class AuthService {
     private router: Router
   ) {}
 
+  
+
   signup(user: any): Observable<any> {
     return this.http
       .post<User>(`${this.url}/signup`, user, this.httpOptions)
@@ -38,6 +40,14 @@ export class AuthService {
         
         catchError(this.errorHandlerService.handleError<User>("signup"))
       );
+  }
+
+  signup1(user:any):Observable<any>{
+    return this.http
+    .post<User>(`${this.url}/signup`,user,this.httpOptions)
+    .pipe(
+      first(),
+    )
   }
 
   login(
